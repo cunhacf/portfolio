@@ -19,7 +19,9 @@ interface ItemProps {
 }
 
 const Wrap = styled.nav`
-
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const Hamburger = styled.button`

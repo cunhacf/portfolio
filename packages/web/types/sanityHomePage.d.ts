@@ -14,5 +14,5 @@ interface SanityHomeContentBlock extends SanityHomeSection {
 
 interface SanityHomePage extends SanityDocument {
   header: SanityHomeHeader;
-  contentBlocks: SanityHomeContentBlock[];
+  contentBlocks?: SanityHomeContentBlock[];
 }

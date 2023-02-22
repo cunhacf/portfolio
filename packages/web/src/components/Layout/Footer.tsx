@@ -1,41 +1,65 @@
-import Link from 'next/link';
+import { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import Container from '@/components/Layout/Container';
-import { helpers } from '@/components/theme';
-
-import LogoIcomp from '@root/public/img/logo-icomp.svg';
 
 const SiteFooter = styled.footer`
+  margin-top: 20px;
+  padding: 40px 0;
   position: relative;
   z-index: 1;
-`;
 
-const Icomp = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  ${props => props.theme.helpers.fontSize(14)}
+  ${Container} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  a {
-    margin: 0 ${props => props.theme.helpers.toRem(15)};
-    color: inherit;
-
-    &:hover {
-      color: ${props => props.theme.colors.secondary};
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+      grid-gap: 10px;
     }
   }
-
-  svg {
-    vertical-align: top;
-  }
 `;
 
-const Footer = (): JSX.Element => {
-  return (
-    <SiteFooter data-aos="fade-down" data-aos-delay="400">
-      <Container>
+const Copyright = styled.div``;
 
+const LanguageSelector = styled.div``;
+
+const Footer = (): JSX.Element => {
+  const router = useRouter();
+  const { i18n: { language } } = useTranslation();
+
+  console.log(language);
+
+  const languageNames = useMemo(() => {
+    return new Intl.DisplayNames([language], {
+      type: 'language',
+    });
+  }, [language]);
+
+  const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const path = router.asPath;
+
+    return router.push(path, path, { locale: e.target.value });
+  }, [router]);
+
+  return (
+    <SiteFooter>
+      <Container>
+        <Copyright>© {new Date().getFullYear()} Carlos Fernandes Cunha</Copyright>
+        <LanguageSelector>
+          <select
+            name="language"
+            onChange={handleLanguageChange}
+            defaultValue={language}>
+
+            {router.locales?.map(locale => (
+              <option key={`locale-${locale}`} value={locale}>{languageNames.of(locale)}</option>
+            ))}
+          </select>
+        </LanguageSelector>
       </Container>
     </SiteFooter>
   );

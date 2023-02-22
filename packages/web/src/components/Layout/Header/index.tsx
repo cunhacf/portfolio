@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import Logo from '@root/public/img/logo.svg';
 
@@ -10,6 +10,7 @@ import LinkButton from '@/components/Layout/LinkButton';
 import Menu from './Menu';
 
 interface Props {
+  config: SanitySiteConfig;
   navigation: SanityNavigation[];
 }
 
@@ -39,7 +40,9 @@ const LogoWrap = styled.div`
 
 `;
 
-const Header = ({ navigation }: Props): JSX.Element => {
+const Header = ({ config, navigation }: Props): JSX.Element => {
+  const { t } = useTranslation('common');
+
   return (
     <SiteHeader>
       <Container>
@@ -58,7 +61,7 @@ const Header = ({ navigation }: Props): JSX.Element => {
         </HeaderBlock>
 
         <HeaderBlock>
-          <LinkButton href="#" muted>Entre em contato</LinkButton>
+          <LinkButton href={config.contactUrl} muted>{t('contactButtonLabel')}</LinkButton>
         </HeaderBlock>
       </Container>
     </SiteHeader>

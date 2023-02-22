@@ -6,6 +6,7 @@ export default {
   type: 'document',
   title: 'Postagem',
   icon: HiOutlineDocumentText,
+  i18n: true,
   fields: [
     {
       name: 'title',
@@ -41,7 +42,13 @@ export default {
       type: 'array',
       title: 'Content',
       of: [{ type: 'block' }]
-    }
+    },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    },
   ],
   preview: {
     select: {

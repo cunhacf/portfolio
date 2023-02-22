@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { rgba } from 'polished';
 
 import Section, { SectionContent, SectionHeader } from '@/components/Section';
 import { Container } from '@/components/Layout';
 
-import WorkCard from './WorkCard';
+import ProjectCard from '@/components/ProjectCard';
 
 interface Props {
   section: SanityHomeContentBlock;
@@ -21,6 +20,14 @@ const WorkList = styled.div`
   grid-gap: ${props => props.theme.helpers.toRem(20)};
   position: relative;
   z-index: 1;
+
+  @media screen and (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Work = ({ section, work }: Props): JSX.Element | null => {
@@ -33,13 +40,13 @@ const Work = ({ section, work }: Props): JSX.Element | null => {
 
       <Container>
         <SectionHeader>
-          <h2>{section?.title || 'novidades'}</h2>
+          <h2>{section.title}</h2>
           {section.description && <p>{section.description}</p>}
         </SectionHeader>
 
         <SectionContent>
           <WorkList>
-            {work.map(workItem => <WorkCard key={workItem._id} work={workItem} />)}
+            {work.map(workItem => <ProjectCard key={workItem._id} project={workItem} />)}
           </WorkList>
         </SectionContent>
       </Container>

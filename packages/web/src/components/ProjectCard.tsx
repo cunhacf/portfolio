@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { lighten } from 'polished';
 
 import sanityImage from '@root/utils/sanityImage';
 
 interface Props {
-  work: SanityWork;
+  project: SanityWork;
 }
 
 const Wrap = styled.div`
@@ -19,12 +18,15 @@ const Wrap = styled.div`
   color: ${props => props.theme.colors.main};
   transition: all 0.2s;
 
-  a {
-    color: inherit;
+  &:hover {
+    background: ${props => props.theme.colors.mainDark} !important;
+  }
 
-    &:hover {
-      color: inherit;
-    }
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    color: inherit;
   }
 `;
 
@@ -68,28 +70,31 @@ const Cover = styled.div`
   }
 `;
 
-const WorkCard = ({ work }: Props): JSX.Element => {
+const ProjectCard = ({ project }: Props): JSX.Element => {
   const cardContent = (
     <>
       <Title>
-        <h3>{work.title}</h3>
-        <p dangerouslySetInnerHTML={{ __html: work.description }} />
+        <h3>{project.title}</h3>
+        <p dangerouslySetInnerHTML={{ __html: project.description }} />
       </Title>
 
       <Cover>
         <Image
-          width={660}
-          height={660}
-          src={sanityImage(work.cover).width(660).height(660).url()}
-          alt={`Imagem do projeto "${work.title}"`} />
+          width={1360}
+          height={1360}
+          src={sanityImage(project.cover).width(1360).height(1360).url()}
+          alt={`Imagem do projeto "${project.title}"`} />
       </Cover>
     </>
   );
 
   return (
-    <Wrap style={{ backgroundColor: work.color.hex }}>
-      {work.url ? (
-        <Link href={work.url} target="_blank" rel="noopener noreferrer">
+    <Wrap
+      className="project-card"
+      style={{ backgroundColor: project.color.hex }}>
+
+      {project.url ? (
+        <Link href={project.url} target="_blank" rel="noopener noreferrer">
           {cardContent}
         </Link>
       ) : (
@@ -99,4 +104,4 @@ const WorkCard = ({ work }: Props): JSX.Element => {
   );
 };
 
-export default WorkCard;
+export default ProjectCard;

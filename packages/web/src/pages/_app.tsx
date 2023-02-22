@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { rgba } from 'polished';
 import { SWRConfig } from 'swr';
+import { appWithTranslation } from 'next-i18next';
 
 import AOS from 'aos';
 
@@ -15,9 +16,13 @@ import 'aos/dist/aos.css';
 
 const GlobalStyle = createGlobalStyle`
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Regular')}
+  ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Italic', 400, 'italic')}
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Medium', 500)}
+  ${props => props.theme.helpers.font('General Sans', 'GeneralSans-MediumItalic', 500, 'italic')}
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Semibold', 600)}
+  ${props => props.theme.helpers.font('General Sans', 'GeneralSans-SemiboldItalic', 600, 'italic')}
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Bold', 700)}
+  ${props => props.theme.helpers.font('General Sans', 'GeneralSans-BoldItalic', 700, 'italic')}
 
   ::selection {
     background: ${props => props.theme.colors.secondary};
@@ -49,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
@@ -119,7 +124,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => {
     if (res.status >= 400 && res.status < 600) throw new Error(res.statusText);
     return res.json();
@@ -146,4 +151,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </SWRConfig>
     </ThemeProvider>
   );
-}
+};
+
+export default appWithTranslation(App);

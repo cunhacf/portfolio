@@ -1,10 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import Header from './Header';
-import Footer from './Footer';
-import Container from './Container';
+import Header from "./Header";
+import Footer from "./Footer";
+import Container from "./Container";
 
 interface Props {
+  config: SanitySiteConfig;
   navigation: SanityNavigation[];
   fillHeight?: boolean;
   noHeader?: boolean;
@@ -12,41 +13,27 @@ interface Props {
   noScroll?: boolean;
 }
 
-const Content = styled.main<Omit<Props, 'navigation'>>`
-  ${props => props.noScroll && css`
-    overflow: hidden;
-  `};
-
-  ${props => props.fillHeight && css`
-    position: relative;
-    flex-grow: 1;
-
-    & + footer {
-      padding-top: 0;
-    }
-  `}
+const Content = styled.main`
 `;
 
-const Layout = ({ navigation, fillHeight, noHeader, noFooter, noScroll, children }: React.PropsWithChildren<Props>): JSX.Element => {
+const Layout = ({
+  config,
+  navigation,
+  children,
+}: React.PropsWithChildren<Props>): JSX.Element => {
   return (
     <>
-      {!noHeader && <Header navigation={navigation} />}
+      <Header config={config} navigation={navigation} />
 
-      <Content
-        noHeader={noHeader}
-        fillHeight={fillHeight}
-        noScroll={noScroll}>
-
+      <Content>
         {children}
       </Content>
 
-      {!noFooter && <Footer />}
+      <Footer />
     </>
   );
 };
 
-export {
-  Container,
-}
+export { Container };
 
 export default Layout;

@@ -7,6 +7,7 @@ export default {
   title: 'Homepage',
   documentId: 'homePage',
   icon: HiOutlineHome,
+  i18n: true,
   fields: [
     {
       name: 'header',

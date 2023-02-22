@@ -7,22 +7,23 @@ export default {
   title: 'General Settings',
   documentId: 'config',
   icon: HiOutlineCog,
+  i18n: true,
   fields: [
     {
       name: 'title',
       type: 'string',
-      title: 'Título',
+      title: 'Title',
       initialValue: 'Carlos Fernandes'
     },
     {
       name: 'description',
       type: 'string',
-      title: 'description'
+      title: 'Description'
     },
     {
       name: 'networks',
       type: 'array',
-      title: 'Redes Sociais',
+      title: 'Social Networks',
       of: [{
         name: 'network',
         type: 'object',

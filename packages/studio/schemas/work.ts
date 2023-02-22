@@ -8,6 +8,7 @@ export default {
   title: 'Work',
   icon: HiOutlineMusicNote,
   orderings: [orderRankOrdering],
+  i18n: true,
   fields: [
     {
       name: 'title',

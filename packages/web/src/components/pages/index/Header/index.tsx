@@ -26,10 +26,20 @@ interface Props {
 const Wrap = styled.div`
   margin-top: 30px;
 
+  @media screen and (max-width: 960px) {
+    margin-top: 0;
+  }
+
   ${Container} {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
+
+    @media screen and (max-width: 960px) {
+      display: flex;
+      flex-direction: column;
+      grid-gap: ;
+    }
   }
 `;
 
@@ -38,6 +48,10 @@ const HeaderIntro = styled.div`
   display: flex;
   flex-direction: column;
   grid-column: auto / span 3;
+
+  @media screen and (max-width: 960px) {
+    padding: 0 0;
+  }
 
   h1 {
     max-width: 550px;
@@ -51,8 +65,12 @@ const HeaderIntro = styled.div`
     margin: 20px 0 0 0;
   }
 
-  div {
+  & > div {
     margin-top: auto;
+
+    @media screen and (max-width: 960px) {
+      margin-top: 60px;
+    }
   }
 `;
 
@@ -61,6 +79,13 @@ const HeaderImage = styled.div`
   grid-column: auto / span 3;
   border-radius: 20px;
   overflow: hidden;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    max-height: 320px;
+    margin: 0 auto;
+    order: -1;
+  }
 
   img {
     width: 100%;

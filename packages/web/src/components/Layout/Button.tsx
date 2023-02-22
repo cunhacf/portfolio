@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { darken } from 'polished';
 
 interface Props {
   muted?: boolean;
@@ -19,11 +18,6 @@ export const buttonStyle = css<Props>`
   background: ${props => props.muted ? props.theme.colors.secondaryAlt : props.theme.colors.secondary};
   color: ${props => props.muted ? props.theme.colors.mainDark : props.theme.colors.main};
   transition: all 0.2s;
-
-  @media screen and (max-width: 640px) {
-    height: 38px;
-    padding: 0 20px;
-  }
 
   &:hover,
   &:focus {

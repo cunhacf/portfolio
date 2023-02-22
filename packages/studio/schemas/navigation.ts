@@ -7,6 +7,7 @@ export default {
   type: 'document',
   title: 'Navigation',
   icon: BiNavigation,
+  i18n: true,
   fields: [
     {
       name: 'title',

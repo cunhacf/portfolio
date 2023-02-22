@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import LinkButton from '@/components/Layout/LinkButton';
 import { helpers } from '@/components/theme';
@@ -50,6 +51,10 @@ const Social = styled.div`
     li {
       margin-left: 20px;
 
+      @media screen and (max-width: 640px) {
+        margin-left: 10px;
+      }
+
       svg {
         vertical-align: top;
       }
@@ -60,9 +65,11 @@ const Social = styled.div`
 const Contact: NextPage<Props> = ({
   config,
 }: Props) => {
+  const { t } = useTranslation('common');
+
   return (
     <Wrap>
-      {config.contactUrl && <LinkButton href={config.contactUrl}>Entre em contato</LinkButton>}
+      {config.contactUrl && <LinkButton href={config.contactUrl}>{t('contactButtonLabel')}</LinkButton>}
 
       {(config.networks && config.networks?.length > 0) && (
         <Social>

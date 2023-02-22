@@ -6,6 +6,7 @@ export default {
   type: 'document',
   title: 'Page',
   icon: HiOutlineDocumentText,
+  i18n: true,
   fields: [
     {
       name: 'title',

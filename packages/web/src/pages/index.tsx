@@ -3,17 +3,13 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import { groq } from 'next-sanity';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '@/components/Layout';
 
 import Header from '@/components/pages/index/Header';
-import Events from '@/components/pages/index/Events';
 import Work from '@/components/pages/index/Work';
-import Posts from '@/components/pages/index/Posts';
-import Videos from '@/components/pages/index/Videos';
-import Discography from '@/components/pages/index/Discography';
-import Gallery from '@/components/pages/index/Gallery';
-import Fans from '@/components/pages/index/Fans';
+import Projects from '@/components/pages/index/Projects';
 import Contact from '@/components/pages/index/Contact';
 
 import client from '@root/client';
@@ -22,8 +18,8 @@ interface Props {
   config: SanitySiteConfig;
   navigation: SanityNavigation[];
   homePage: SanityHomePage;
-  posts: SanityBlogPost[];
   work: SanityWork[];
+  projects: SanityProject[];
 }
 
 const Content = styled.div``;
@@ -32,23 +28,17 @@ const HomePage: NextPage<Props> = ({
   config,
   navigation,
   homePage,
-  work
+  work,
+  projects,
 }: Props) => {
-  const [documentLoaded, setDocumentLoaded] = useState(false);
-
-  useEffect(() => {
-    setDocumentLoaded(true);
-  }, []);
-
   return (
-    <Layout navigation={navigation}>
-
+    <Layout config={config} navigation={navigation}>
       <Head>
-        <title>{config.title || 'Léo Magalhães'}</title>
-        <meta name="description" content={config.description || 'Coragem, determinação, talento e carisma, elementos que se encaixaram na vida de um garoto chamando Léo Magalhães.'} />
+        <title>{config.title}</title>
+        {config.description && <meta name="description" content={config.description} />}
 
-        <meta property="og:title" content={config.title || 'Léo Magalhães'} key="og-title" />
-        <meta property="og:description" content={config.description || 'Coragem, determinação, talento e carisma, elementos que se encaixaram na vida de um garoto chamando Léo Magalhães.'} key="og-description" />
+        <meta property="og:title" content={config.title} key="og-title" />
+        {config.description && <meta property="og:description" content={config.description} key="og-description" />}
       </Head>
 
       <Content>
@@ -56,7 +46,7 @@ const HomePage: NextPage<Props> = ({
           section={homePage.header}
           config={config} />
 
-        {homePage.contentBlocks.map(contentBlock => {
+        {homePage.contentBlocks?.map(contentBlock => {
           switch (contentBlock.blockType) {
             case 'work':
               return (
@@ -66,57 +56,30 @@ const HomePage: NextPage<Props> = ({
               )
             case 'projects':
               return (
-                <Work
+                <Projects
                   section={contentBlock}
-                  work={work} />
+                  projects={projects} />
               )
             case 'contact':
               return (
-                <Work
+                <Contact
                   section={contentBlock}
-                  work={work} />
+                  config={config} />
               )
           }
         })}
-
-        {/* {documentLoaded && <Events
-          section={homePage.events}
-          events={events} />}
-
-        <Posts
-          section={homePage.posts}
-          highlights={homePage.posts?.posts}
-          posts={posts} />
-
-        <Videos
-          config={config}
-          section={homePage.videos}
-          highlights={homePage.videos?.videos}
-          videos={videos} />
-
-        <Discography
-          section={homePage.discography}
-          records={records} />
-
-        <Gallery
-          section={homePage.gallery}
-          galleries={galleries} />
-
-        <Fans
-          section={homePage.fans} />
-
-        <Contact
-          config={config}
-          section={homePage.contact} /> */}
       </Content>
     </Layout>
   )
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
   const fetch = await client.fetch(groq`{
-    "config": *[_type == "config" && _id == 'config'][0],
-    "navigation": *[_type == "navigation" && !(_id in path("drafts.**"))] | order(orderRank asc){
+    "config": coalesce(
+      *[_type == "config" && _id == 'config__i18n_' + $locale][0],
+      *[_type == "config" && _id == 'config'][0]
+    ),
+    "navigation": *[_type == "navigation" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc){
       _id,
       title,
       external,
@@ -124,27 +87,30 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       blank,
       internalPage->
     },
-    "homePage": *[_type == "homePage" && _id == 'homePage'][0]{
-      header,
-      contentBlocks
-    },
-    "posts": *[_type == "blogPost" && !(_id in path("drafts.**"))] | order(date asc),
-    "work": *[_type == "work" && !(_id in path("drafts.**"))] | order(orderRank asc),
-  }`, { currentDate: new Date().toISOString().replace(/T.*/, '') });
+    "homePage": coalesce(
+      *[_type == "homePage" && _id == 'homePage__i18n_' + $locale][0],
+      *[_type == "homePage" && _id == 'homePage'][0]
+    ),
+    "work": *[_type == "work" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
+    "projects": *[_type == "project" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
+  }`, { currentDate: new Date().toISOString().replace(/T.*/, ''), locale });
 
   const config = fetch.config;
   const navigation = fetch.navigation;
   const homePage = fetch.homePage;
-  const posts = fetch.posts;
   const work = fetch.work;
+  const projects = fetch.projects;
 
   return {
     props: {
       config,
       navigation,
       homePage,
-      posts,
       work,
+      projects,
+      ...(await serverSideTranslations(locale as string, [
+        'common'
+      ]))
     },
     revalidate: 60
   }
