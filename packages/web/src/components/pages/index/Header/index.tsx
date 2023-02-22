@@ -48,6 +48,10 @@ const HeaderIntro = styled.div`
     margin: 0;
     ${props => props.theme.helpers.fontSize(40)}
     font-weight: 500;
+
+    @media screen and (max-width: 640px) {
+      ${props => props.theme.helpers.fontSize(30)}
+    }
   }
 
   p {

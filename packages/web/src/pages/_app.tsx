@@ -45,11 +45,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.mainDark};
 
     @media screen and (max-width: 960px) {
-      font-size: 14px;
-    }
-
-    @media screen and (max-width: 768px) {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 
