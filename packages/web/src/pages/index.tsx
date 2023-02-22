@@ -13,6 +13,7 @@ import Projects from '@/components/pages/index/Projects';
 import Contact from '@/components/pages/index/Contact';
 
 import client from '@root/client';
+import sanityImage from '@root/utils/sanityImage';
 
 interface Props {
   config: SanitySiteConfig;
@@ -39,6 +40,7 @@ const HomePage: NextPage<Props> = ({
 
         <meta property="og:title" content={config.title} key="og-title" />
         {config.description && <meta property="og:description" content={config.description} key="og-description" />}
+        {homePage.header.image && <meta property="og:image" content={sanityImage(homePage.header.image).url()} key="og-image" />}
       </Head>
 
       <Content>
