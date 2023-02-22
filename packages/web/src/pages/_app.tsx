@@ -1,18 +1,13 @@
-import { useEffect } from 'react';
+import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { rgba } from 'polished';
-import { SWRConfig } from 'swr';
 import { appWithTranslation } from 'next-i18next';
-
-import AOS from 'aos';
 
 import theme from '@/components/theme';
 
 import favicon from '@root/public/img/favicon.png';
-
-import 'aos/dist/aos.css';
 
 const GlobalStyle = createGlobalStyle`
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Regular')}
@@ -125,29 +120,29 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => {
-    if (res.status >= 400 && res.status < 600) throw new Error(res.statusText);
-    return res.json();
-  }).catch(err => { throw new Error(err); });
-
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
-      <SWRConfig value={{ fetcher }}>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-          <link rel="icon" href={favicon.src} type="image/x-icon" />
-          <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
-        </Head>
+        <link rel="icon" href={favicon.src} type="image/x-icon" />
+        <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
+      </Head>
 
-        <Component {...pageProps} />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        <GlobalStyle />
-      </SWRConfig>
+          ga('create', 'UA-57970629-1', 'auto');
+          ga('send', 'pageview');
+        `}
+      </Script>
+      <Component {...pageProps} />
+
+      <GlobalStyle />
     </ThemeProvider>
   );
 };
