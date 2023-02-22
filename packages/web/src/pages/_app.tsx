@@ -10,7 +10,7 @@ import AOS from 'aos';
 
 import theme from '@/components/theme';
 
-import logo from '@root/public/img/logo.png';
+import favicon from '@root/public/img/favicon.png';
 
 import 'aos/dist/aos.css';
 
@@ -140,9 +140,8 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-          <meta property="og:title" content="Léo Magalhães" key="og-title" />
-          <meta property="og:description" content="Coragem, determinação, talento e carisma, elementos que se encaixaram na vida de um garoto chamando Léo Magalhães." key="og-description" />
-          <meta property="og:image" content={logo.src} key="og-image" />
+          <link rel="icon" href={favicon.src} type="image/x-icon" />
+          <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
         </Head>
 
         <Component {...pageProps} />

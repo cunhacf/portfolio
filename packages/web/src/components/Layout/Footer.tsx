@@ -31,8 +31,6 @@ const Footer = (): JSX.Element => {
   const router = useRouter();
   const { i18n: { language } } = useTranslation();
 
-  console.log(language);
-
   const languageNames = useMemo(() => {
     return new Intl.DisplayNames([language], {
       type: 'language',

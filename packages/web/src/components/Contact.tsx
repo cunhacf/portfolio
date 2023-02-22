@@ -8,7 +8,7 @@ import { helpers } from '@/components/theme';
 
 import IconYouTube from '@root/public/img/icon-youtube.svg';
 import IconInstagram from '@root/public/img/logo-instagram.svg';
-import IconFacebook from '@root/public/img/logo-facebook-square.svg';
+import IconFacebook from '@root/public/img/logo-facebook.svg';
 import IconTwitter from '@root/public/img/logo-twitter.svg';
 import IconTikTok from '@root/public/img/logo-tiktok.svg';
 import IconGitHub from '@root/public/img/logo-github.svg';

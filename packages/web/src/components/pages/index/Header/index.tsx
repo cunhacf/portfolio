@@ -1,19 +1,9 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import styled from 'styled-components';
 import { PortableText } from '@portabletext/react';
 
 import { Container } from '@/components/Layout';
-import { helpers } from '@/components/theme';
-
-import IconYouTube from '@root/public/img/icon-youtube.svg';
-import IconInstagram from '@root/public/img/logo-instagram.svg';
-import IconFacebook from '@root/public/img/logo-facebook-square.svg';
-import IconTwitter from '@root/public/img/logo-twitter.svg';
-import IconTikTok from '@root/public/img/logo-tiktok.svg';
-import IconGitHub from '@root/public/img/logo-github.svg';
-import IconLinkedIn from '@root/public/img/logo-linkedin.svg';
 
 import sanityImage from '@root/utils/sanityImage';
 import Contact from '@root/src/components/Contact';
@@ -38,7 +28,7 @@ const Wrap = styled.div`
     @media screen and (max-width: 960px) {
       display: flex;
       flex-direction: column;
-      grid-gap: ;
+      grid-gap: 20;
     }
   }
 `;
