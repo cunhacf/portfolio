@@ -26,7 +26,7 @@ const ProjectList = styled.div`
   }
 `;
 
-const Project = ({ section, projects }: Props): JSX.Element | null => {
+const Projects = ({ section, projects }: Props): JSX.Element | null => {
   if (!projects?.length) return null;
 
   return (
@@ -50,4 +50,4 @@ const Project = ({ section, projects }: Props): JSX.Element | null => {
   );
 };
 
-export default Project;
+export default Projects;
