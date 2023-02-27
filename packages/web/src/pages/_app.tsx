@@ -130,14 +130,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-H94G76SZVS" strategy="afterInteractive" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
-          <!-- Google tag (gtag.js) -->
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-            gtag('config', 'G-H94G76SZVS');
-          </script>
+          gtag('config', 'G-H94G76SZVS');
         `}
       </Script>
       <Component {...pageProps} />
