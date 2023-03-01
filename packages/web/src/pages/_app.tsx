@@ -123,8 +123,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
         <link rel="icon" href={favicon.src} type="image/x-icon" />
         <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
-
-        <script async src="https://polyfill.io/v3/polyfill.min.js?features=Intl" />
       </Head>
 
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-H94G76SZVS" strategy="afterInteractive" />

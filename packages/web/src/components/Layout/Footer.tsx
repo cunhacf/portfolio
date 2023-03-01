@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
@@ -31,11 +31,10 @@ const Footer = (): JSX.Element => {
   const router = useRouter();
   const { i18n: { language } } = useTranslation();
 
-  const languageNames = useMemo(() => {
-    return new Intl.DisplayNames([language], {
-      type: 'language',
-    });
-  }, [language]);
+  const languageNames: { [key: string]: string } = {
+    en: 'English',
+    pt: 'Português'
+  };
 
   const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     const path = router.asPath;
@@ -54,7 +53,7 @@ const Footer = (): JSX.Element => {
             defaultValue={language}>
 
             {router.locales?.map(locale => (
-              <option key={`locale-${locale}`} value={locale}>{languageNames.of(locale)}</option>
+              <option key={`locale-${locale}`} value={locale}>{languageNames[locale]}</option>
             ))}
           </select>
         </LanguageSelector>

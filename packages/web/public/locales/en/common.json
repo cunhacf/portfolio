@@ -1,3 +1,5 @@
 {
-  "contactButtonLabel": "Contact me"
+  "contactButtonLabel": "Contact me",
+  "error404Title": "Error 404",
+  "error404Text": "The page you're looking for doesn't exist"
 }
