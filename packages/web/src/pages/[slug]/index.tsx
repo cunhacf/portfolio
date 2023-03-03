@@ -1,5 +1,7 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { useEffect } from 'react';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { groq } from 'next-sanity';
 import { ParsedUrlQuery } from 'querystring';
@@ -28,7 +30,21 @@ const PageHeader = styled(SectionHeader)`
   }
 `;
 
-const BlogPost: NextPage<Props> = ({ config, navigation, page }: Props) => {
+const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (page?.__i18n_lang !== router.locale) {
+      const localeRef: SanityPage | undefined = page?.__i18n_base
+        ? page?.__i18n_base as SanityPage
+        : page?.__i18n_refs?.find((ref: SanityDocument) => ref.__i18n_lang === router.locale) as SanityPage;
+
+      if (localeRef) {
+        router.push(page?.__i18n_base ? `/${localeRef.slug.current}` : `/${router.locale}/${localeRef.slug.current}`);
+      }
+    }
+  }, [router]);
+
   const components: { marks: PortableTextReactComponents['marks'] } = {
     marks: {
       link: ({ children, value }) => {
@@ -122,21 +138,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params, locale }) 
   const navigation = fetch.navigation;
   const page = fetch.page;
 
-  if (page?.__i18n_lang !== locale) {
-    const localeRef = page?.__i18n_base
-      ? page?.__i18n_base
-      : page?.__i18n_refs.find((ref: SanityDocument) => ref.__i18n_lang === locale);
-
-    if (localeRef) {
-      return {
-        redirect: {
-          destination: page?.__i18n_base ? `/${localeRef.slug.current}` : `/${locale}/${localeRef.slug.current}`,
-          permanent: false
-        }
-      }
-    }
-  }
-
   if (!page) {
     return {
       notFound: true
@@ -156,4 +157,4 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params, locale }) 
   }
 };
 
-export default BlogPost;
+export default Page;
