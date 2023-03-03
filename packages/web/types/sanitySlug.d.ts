@@ -1,3 +1,0 @@
-interface SanitySlug {
-  current: string;
-}

@@ -28,7 +28,7 @@ export default {
       name: 'internalPage',
       type: 'reference',
       title: 'Page',
-      to: [{ type: 'page' }, { type: 'blogPost' }],
+      to: [{ type: 'page' }],
       hidden: ({ document }: any) => document.external || document.children?.length,
       validation: (Rule: Rule) => [
         Rule.custom((value, { document }: any) => {

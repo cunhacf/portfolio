@@ -7,7 +7,7 @@ import { documentI18n } from '@sanity/document-internationalization';
 import { schemaTypes } from './schemas';
 
 import { RiPagesLine } from 'react-icons/ri';
-import { BiBook, BiNavigation } from 'react-icons/bi';
+import { BiNavigation } from 'react-icons/bi';
 import { HiOutlineHome, HiOutlineDocumentText, HiCode, HiOutlineCog } from 'react-icons/hi';
 import { ImLab } from 'react-icons/im';
 
@@ -48,13 +48,6 @@ export default defineConfig({
                   ])
               ),
             S.divider(),
-            S.listItem()
-              .title('Blog')
-              .icon(BiBook)
-              .child(
-                S.documentTypeList('blogPost')
-                  .title('Posts')
-              ),
             orderableDocumentListDeskItem({
               type: 'work',
               title: 'Work',
