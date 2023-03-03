@@ -24,8 +24,13 @@ interface Props {
   page: SanityPage;
 }
 
+const PageSection = styled(Section)`
+  margin-top: 20px;
+`;
+
 const PageHeader = styled(SectionHeader)`
   h1 {
+    ${props => props.theme.helpers.fontSize(45)}
     color: ${props => props.theme.colors.secondary};
   }
 `;
@@ -75,7 +80,7 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
         {page.__i18n_refs?.map(i18nRef => <link key={i18nRef.__i18n_lang} rel="alternate" hrefLang={i18nRef.__i18n_lang} href={`/${i18nRef.__i18n_lang}/${(i18nRef as SanityPage).slug.current}`} />)}
       </Head>
 
-      <Section>
+      <PageSection>
         <Container>
           <PageHeader>
             <h1>{page.title}</h1>
@@ -85,7 +90,7 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
             <PortableText value={page.content} components={components} />
           </PageContent>
         </Container>
-      </Section>
+      </PageSection>
     </Layout>
   )
 };
