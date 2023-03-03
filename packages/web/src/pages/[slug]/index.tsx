@@ -56,7 +56,7 @@ const BlogPost: NextPage<Props> = ({ config, navigation, page }: Props) => {
         {page.image && <meta property="og:image" content={sanityImage(page.image).url()} key="og-image" />}
 
         {page.__i18n_base && <link rel="alternate" hrefLang={page.__i18n_base.__i18n_lang} href={`/${(page.__i18n_base as SanityPage).slug.current}`} />}
-        {page.__i18n_refs?.map(i18nRef => <link rel="alternate" hrefLang={i18nRef.__i18n_lang} href={`/${i18nRef.__i18n_lang}/${(i18nRef as SanityPage).slug.current}`} />)}
+        {page.__i18n_refs?.map(i18nRef => <link key={i18nRef.__i18n_lang} rel="alternate" hrefLang={i18nRef.__i18n_lang} href={`/${i18nRef.__i18n_lang}/${(i18nRef as SanityPage).slug.current}`} />)}
       </Head>
 
       <Section>
