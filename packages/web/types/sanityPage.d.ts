@@ -8,8 +8,4 @@ interface SanityPage extends SanityDocument {
   slug: SanitySlug;
   image?: SanityImage;
   content: import('@portabletext/react').TypedObject;
-  highlightsBlock: {
-    title: string,
-    highlights: SanityPageHighlight[]
-  }
 }

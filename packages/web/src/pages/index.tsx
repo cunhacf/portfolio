@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -95,7 +94,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
     ),
     "work": *[_type == "work" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
     "projects": *[_type == "project" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
-  }`, { currentDate: new Date().toISOString().replace(/T.*/, ''), locale });
+  }`, { locale });
 
   const config = fetch.config;
   const navigation = fetch.navigation;
