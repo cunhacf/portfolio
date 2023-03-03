@@ -3768,17 +3768,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aos@npm:^2.3.4":
-  version: 2.3.4
-  resolution: "aos@npm:2.3.4"
-  dependencies:
-    classlist-polyfill: ^1.0.3
-    lodash.debounce: ^4.0.6
-    lodash.throttle: ^4.0.1
-  checksum: 42f823777e9042b860e286b2e75478866eaa5ae9f5d6e2ff6fee5f79b2a94dd50e4a161c2fae490ba9b92be21ba36452212ed5f6dbd1f88a83697a57164864a1
-  languageName: node
-  linkType: hard
-
 "aproba@npm:^1.0.3 || ^2.0.0":
   version: 2.0.0
   resolution: "aproba@npm:2.0.0"
@@ -4278,13 +4267,6 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
-  languageName: node
-  linkType: hard
-
-"classlist-polyfill@npm:^1.0.3":
-  version: 1.2.0
-  resolution: "classlist-polyfill@npm:1.2.0"
-  checksum: 43ff10af5e75d0347f820d77536a12f981adbf5be9c0ff5c3c4823693c8daacf8aa487eac1a9704b73f4dd74d811e5145b4465fe606926351cdfca5bb9b0914e
   languageName: node
   linkType: hard
 
@@ -5091,13 +5073,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enquire.js@npm:^2.1.6":
-  version: 2.1.6
-  resolution: "enquire.js@npm:2.1.6"
-  checksum: bb094054ee2768edafc3b80fb2b65b79d63160d625085162e9c9016843b6eaa13d7430201bf593c2e31e1725b3208f47f57aa27e03b19729e7590d1ca2241451
-  languageName: node
-  linkType: hard
-
 "entities@npm:^2.0.0":
   version: 2.2.0
   resolution: "entities@npm:2.2.0"
@@ -5669,13 +5644,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ev-emitter@npm:^2.0.0, ev-emitter@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "ev-emitter@npm:2.1.2"
-  checksum: 1102823ef040684869256100e19a6c6aeeecd422d09a267d7c74e77023136eede2ee86ee475ad1019d30d1f7917557d74542d5665e9f91c398bd5814260af6b3
-  languageName: node
-  linkType: hard
-
 "event-source-polyfill@npm:1.0.25":
   version: 1.0.25
   resolution: "event-source-polyfill@npm:1.0.25"
@@ -5830,13 +5798,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fizzy-ui-utils@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "fizzy-ui-utils@npm:3.0.0"
-  checksum: 73b53e5dc89e033bad3eb9cf111d220502afae083c84fbc842d9453202673284de270f7bbe6cc77a806678e62cf8068da1b4280f0d3a1bf1310110248dfa96cd
-  languageName: node
-  linkType: hard
-
 "flat-cache@npm:^3.0.4":
   version: 3.0.4
   resolution: "flat-cache@npm:3.0.4"
@@ -5851,19 +5812,6 @@ __metadata:
   version: 3.2.7
   resolution: "flatted@npm:3.2.7"
   checksum: 427633049d55bdb80201c68f7eb1cbd533e03eac541f97d3aecab8c5526f12a20ccecaeede08b57503e772c769e7f8680b37e8d482d1e5f8d7e2194687f9ea35
-  languageName: node
-  linkType: hard
-
-"flickity@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "flickity@npm:3.0.0"
-  dependencies:
-    ev-emitter: ^2.1.2
-    fizzy-ui-utils: ^3.0.0
-    get-size: ^3.0.0
-    imagesloaded: ^5.0.0
-    unidragger: ^3.0.0
-  checksum: 447083455232553685ce518ee51ce93239a10f921cebecd7b859183ecef870f156ff46003698c4831e1ddd246bc97b63b6c0e57051cdc80d366a94c28b96ec32
   languageName: node
   linkType: hard
 
@@ -6144,13 +6092,6 @@ __metadata:
   dependencies:
     global: ^4.4.0
   checksum: 7dc16734f4ac9068f5b9985177b54b856b778ecb54c93e02cf60e53b9cf74d354be726b1b202785a453d55d5c5c8d10d73993654c89613f3cc33c2bfd23a7a3b
-  languageName: node
-  linkType: hard
-
-"get-size@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "get-size@npm:3.0.0"
-  checksum: 9a475bce9a718322b80c20a9651a7b09c8ddb85d094131fda7d32ffe272442c3d0621df6a61b543a23ca741c261f96841078927e17acfc88957c2a6029ba5b34
   languageName: node
   linkType: hard
 
@@ -6672,15 +6613,6 @@ __metadata:
   version: 5.2.4
   resolution: "ignore@npm:5.2.4"
   checksum: 3d4c309c6006e2621659311783eaea7ebcd41fe4ca1d78c91c473157ad6666a57a2df790fe0d07a12300d9aac2888204d7be8d59f9aaf665b1c7fcdb432517ef
-  languageName: node
-  linkType: hard
-
-"imagesloaded@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "imagesloaded@npm:5.0.0"
-  dependencies:
-    ev-emitter: ^2.1.2
-  checksum: aec1826e866bcf2f92fc533b78e431597096c32dda3cf6de060f9dc2bdf1e39bb600eda244a7280ed09a7d12462fb63cf01e723799d35a86a326592e2f23751b
   languageName: node
   linkType: hard
 
@@ -7294,15 +7226,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json2mq@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "json2mq@npm:0.2.0"
-  dependencies:
-    string-convert: ^0.2.0
-  checksum: 5672c3abdd31e21a0e2f0c2688b4948103687dab949a1c5a1cba98667e899a96c2c7e3d71763c4f5e7cd7d7c379ea5dd5e1a9b2a2107dd1dfa740719a11aa272
-  languageName: node
-  linkType: hard
-
 "json5@npm:^1.0.1":
   version: 1.0.2
   resolution: "json5@npm:1.0.2"
@@ -7488,7 +7411,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.debounce@npm:^4.0.6, lodash.debounce@npm:^4.0.8":
+"lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
@@ -7534,13 +7457,6 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
-  languageName: node
-  linkType: hard
-
-"lodash.throttle@npm:^4.0.1":
-  version: 4.1.1
-  resolution: "lodash.throttle@npm:4.1.1"
-  checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
   languageName: node
   linkType: hard
 
@@ -9059,22 +8975,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-slick@npm:^0.29.0":
-  version: 0.29.0
-  resolution: "react-slick@npm:0.29.0"
-  dependencies:
-    classnames: ^2.2.5
-    enquire.js: ^2.1.6
-    json2mq: ^0.2.0
-    lodash.debounce: ^4.0.8
-    resize-observer-polyfill: ^1.5.0
-  peerDependencies:
-    react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 67ce4981914da8a76c6efb4bc8ee7ab69e04c33bd4b3517419ab2165679a3c701dae781556149713fe2c542f84188b7ca101ea58883537be5c05756408f48c8b
-  languageName: node
-  linkType: hard
-
 "react-style-proptype@npm:^3.2.2":
   version: 3.2.2
   resolution: "react-style-proptype@npm:3.2.2"
@@ -9300,13 +9200,6 @@ __metadata:
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
   checksum: eee0e303adffb69be55d1a214e415cf42b7441ae858c76dfc5353148644f6fd6e698926fc4643f510d5c126d12a705e7c8ed7e38061113bdf37547ab356797ff
-  languageName: node
-  linkType: hard
-
-"resize-observer-polyfill@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "resize-observer-polyfill@npm:1.5.1"
-  checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
   languageName: node
   linkType: hard
 
@@ -9810,15 +9703,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slick-carousel@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "slick-carousel@npm:1.8.1"
-  peerDependencies:
-    jquery: ">=1.8.0"
-  checksum: acaad391e4d8bc1c7fdb8d361faa1f1d60829b31d618b54bc38c0550a59b26de36537e0ab4bc0364176ec11d1a61d0cf11e99d8d5b1285d656673c9a1a719257
-  languageName: node
-  linkType: hard
-
 "smart-buffer@npm:^4.2.0":
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
@@ -9971,13 +9855,6 @@ __metadata:
   version: 1.0.1
   resolution: "stream-shift@npm:1.0.1"
   checksum: 59b82b44b29ec3699b5519a49b3cedcc6db58c72fb40c04e005525dfdcab1c75c4e0c180b923c380f204bed78211b9bad8faecc7b93dece4d004c3f6ec75737b
-  languageName: node
-  linkType: hard
-
-"string-convert@npm:^0.2.0":
-  version: 0.2.1
-  resolution: "string-convert@npm:0.2.1"
-  checksum: 1098b1d8e3712c72d0a0b0b7f5c36c98af93e7660b5f0f14019e41bcefe55bfa79214d5e03e74d98a7334a0b9bf2b7f4c6889c8c24801aa2ae2f9ebe1d8a1ef9
   languageName: node
   linkType: hard
 
@@ -10235,17 +10112,6 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: b92f71a8541468ffd0b81b8cdb36b1e242eea320bf3c1a9b2c8809945853e9d8c80c19744267eb91cabf06ae9d5fff3592d677df85a31be4ed59ff78534fa420
-  languageName: node
-  linkType: hard
-
-"swr@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "swr@npm:2.0.3"
-  dependencies:
-    use-sync-external-store: ^1.2.0
-  peerDependencies:
-    react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: 968071e3336b81194879fd94553777793314e773cd2a27665617131403dca6b7e4d3697ab00d0b0aa456c107c0c8d86f9ce52bac22f8533e8421099870d46b17
   languageName: node
   linkType: hard
 
@@ -10648,15 +10514,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unidragger@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "unidragger@npm:3.0.1"
-  dependencies:
-    ev-emitter: ^2.0.0
-  checksum: c7dcfca17bfc49c1ef1f7006bb7c56cc4a03a82e7c0e1f14c10f0e2172b1fac796df1b9274c7312fded167fe9987e20d45b86599d9344a2d861c8aaa7f361cba
-  languageName: node
-  linkType: hard
-
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -10933,10 +10790,8 @@ __metadata:
     "@types/react-dom": 18.0.10
     "@types/react-slick": ^0.23.10
     "@types/styled-components": ^5.1.26
-    aos: ^2.3.4
     eslint: 8.34.0
     eslint-config-next: 13.1.6
-    flickity: ^3.0.0
     i18next: ^22.4.10
     next: 13.1.6
     next-i18next: ^13.1.5
@@ -10944,9 +10799,6 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-i18next: ^12.1.5
-    react-slick: ^0.29.0
-    slick-carousel: ^1.8.1
-    swr: ^2.0.3
     typescript: 4.9.5
   languageName: unknown
   linkType: soft

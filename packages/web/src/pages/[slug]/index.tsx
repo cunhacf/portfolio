@@ -43,7 +43,7 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
         router.push(page?.__i18n_base ? `/${localeRef.slug.current}` : `/${router.locale}/${localeRef.slug.current}`);
       }
     }
-  }, [router]);
+  }, [router, page]);
 
   const components: { marks: PortableTextReactComponents['marks'] } = {
     marks: {
