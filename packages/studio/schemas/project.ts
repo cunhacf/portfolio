@@ -51,7 +51,16 @@ export default {
     {
       name: 'color',
       type: 'color',
-      title: 'Color'
+      title: 'Color',
+      validation: (Rule: Rule) => [
+        Rule.required().error('Color is required'),
+      ]
+    },
+    {
+      name: 'inverted',
+      type: 'boolean',
+      title: 'Inverted',
+      initialValue: false,
     },
     orderRankField({ type: 'project' })
   ]

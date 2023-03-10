@@ -9,6 +9,14 @@ export const colors = {
   youtube: '#CC0000'
 };
 
+export const colorsDark = {
+  ...colors,
+  main: '#000',
+  mainDark: '#FFFFFF',
+  secondaryAlt: '#333',
+  bg: '#1D1D1F',
+};
+
 export const helpers = {
   toRem: (size: number): string => {
     const remSize = size / 16;
@@ -52,9 +60,15 @@ export interface Theme extends DefaultTheme {
   isDark?: boolean;
 }
 
-const theme: Theme = {
+export const lightTheme: Theme = {
   colors,
   helpers,
 };
 
-export default theme;
+export const darkTheme: Theme = {
+  ...lightTheme,
+  colors: colorsDark,
+  isDark: true
+};
+
+export default lightTheme;

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -5,9 +6,11 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { rgba } from 'polished';
 import { appWithTranslation } from 'next-i18next';
 
-import theme from '@/components/theme';
+import { lightTheme, darkTheme } from '@/components/theme';
 
 import favicon from '@root/public/img/favicon.png';
+
+type AppTheme = 'light' | 'dark' | string;
 
 const GlobalStyle = createGlobalStyle`
   ${props => props.theme.helpers.font('General Sans', 'GeneralSans-Regular')}
@@ -116,8 +119,25 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const [theme, setTheme] = useState<AppTheme>('light');
+
+  useEffect(() => {
+    if (!window) return;
+
+    const preferredTheme: AppTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const storageTheme: AppTheme = localStorage.getItem('theme') as string;
+
+    window.addEventListener('storage', () => {
+      if (!localStorage.getItem('theme')) return;
+
+      setTheme(localStorage.getItem('theme') as string);
+    });
+
+    setTheme(storageTheme || preferredTheme || 'light');
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 

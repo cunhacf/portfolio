@@ -15,11 +15,19 @@ const Wrap = styled.div`
   border-radius: 20px;
   overflow: hidden;
   background: ${props => props.theme.colors.secondary};
-  color: ${props => props.theme.colors.main};
+  color: ${props => props.theme.isDark ? props.theme.colors.mainDark : props.theme.colors.main};
   transition: all 0.2s;
 
+  &.inverted {
+    color: ${props => props.theme.isDark ? props.theme.colors.main : props.theme.colors.mainDark};
+
+    &:hover {
+      color: ${props => props.theme.isDark ? props.theme.colors.mainDark : props.theme.colors.main};
+    }
+  }
+
   &:hover {
-    background: ${props => props.theme.colors.mainDark} !important;
+    background: ${props => props.theme.isDark ? props.theme.colors.secondaryAlt : props.theme.colors.mainDark} !important;
   }
 
   a,
@@ -37,7 +45,6 @@ const Title = styled.div`
     margin: 0;
     ${props => props.theme.helpers.fontSize(32)}
     font-weight: 600;
-    transition: all 0.2s;
 
     @media screen and (max-width: 480px) {
       line-height: 1;
@@ -90,7 +97,7 @@ const ProjectCard = ({ project }: Props): JSX.Element => {
 
   return (
     <Wrap
-      className="project-card"
+      className={`project-card ${project.inverted ? 'inverted' : ''}`}
       style={{ backgroundColor: project.color.hex }}>
 
       {project.url ? (

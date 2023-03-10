@@ -1,5 +1,8 @@
 {
   "contactButtonLabel": "Contact me",
   "error404Title": "Error 404",
-  "error404Text": "The page you're looking for doesn't exist"
+  "error404Text": "The page you're looking for doesn't exist",
+  "enable": "Enable",
+  "disable": "Enable",
+  "darkMode": "dark mode"
 }

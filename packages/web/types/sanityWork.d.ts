@@ -5,4 +5,5 @@ interface SanityWork extends SanityDocument {
   cover: SanityImage;
   url?: string;
   color: import('@sanity/color-input').ColorValue;
+  inverted?: boolean;
 }
