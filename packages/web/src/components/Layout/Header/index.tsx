@@ -37,7 +37,7 @@ const HeaderBlock = styled.div`
 `;
 
 const LogoWrap = styled.div`
-
+  color: ${props => props.theme.colors.secondary};
 `;
 
 const Header = ({ config, navigation }: Props): JSX.Element => {
@@ -48,11 +48,10 @@ const Header = ({ config, navigation }: Props): JSX.Element => {
       <Container>
         <HeaderBlock>
           <LogoWrap>
-            <Link href="/">
-              <Logo
-                width={50}
-                height={50} />
-            </Link>
+            <Logo
+              width={50}
+              height={50}
+              title="Logo" />
           </LogoWrap>
         </HeaderBlock>
 

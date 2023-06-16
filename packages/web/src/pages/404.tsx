@@ -32,7 +32,7 @@ const Error404Page: NextPage<Props> = ({
   return (
     <Layout config={config} navigation={navigation}>
       <Head>
-        <title>{t('error404Title').toString()} &middot; {config.title}</title>
+        <title>{`${t('error404Title').toString()} · ${config.title}`}</title>
         {config.description && <meta name="description" content={config.description} />}
 
         <meta property="og:title" content={`${t('error404Title')} &middot; ${config.title}`} key="og-title" />

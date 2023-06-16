@@ -103,13 +103,19 @@ const Header: NextPage<Props> = ({
         </HeaderIntro>
 
         {section?.image && <HeaderImage>
-          <Image
-            width={960}
-            height={960}
-            src={sanityImage(section.image).width(960).height(960).quality(100).url()}
-            quality={100}
-            alt="Fundo do topo"
-            loading="eager" />
+          <picture>
+            <source media="(max-width: 959px)" srcSet={sanityImage(section.image).width(960).height(960).quality(100).auto('format').url()} />
+            <source media="(min-width: 960px)" srcSet={sanityImage(section.image).width(670).height(580).quality(100).auto('format').url()} />
+
+            <Image
+              width={960}
+              height={960}
+              src={sanityImage(section.image).width(960).height(960).quality(100).auto('format').url()}
+              quality={100}
+              alt="Fundo do topo"
+              loading="eager"
+              priority />
+          </picture>
         </HeaderImage>}
       </Container>
     </Wrap>

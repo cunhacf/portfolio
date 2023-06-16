@@ -69,7 +69,7 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
     <Layout config={config} navigation={navigation}>
 
       <Head>
-        <title>{page.title} &middot; {config.title}</title>
+        <title>{`${page.title} · ${config.title}`}</title>
         <meta name="description" content={`${toPlainText(page.content).substring(0, 200)}...` || config.description} />
 
         <meta property="og:title" content={`${page.title} &middot; ${config.title}`} key="og-title" />

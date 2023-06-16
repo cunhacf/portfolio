@@ -1,6 +1,6 @@
 import 'styled-components';
 
-import { colors, helpers } from '../components/Shared/theme';
+import { colors, helpers } from '@/components/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme {

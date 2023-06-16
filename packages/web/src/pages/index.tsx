@@ -34,7 +34,7 @@ const HomePage: NextPage<Props> = ({
   return (
     <Layout config={config} navigation={navigation}>
       <Head>
-        <title>{config.title}</title>
+        <title>{`${config.title}`}</title>
         {config.description && <meta name="description" content={config.description} />}
 
         <meta property="og:title" content={config.title} key="og-title" />
@@ -47,23 +47,26 @@ const HomePage: NextPage<Props> = ({
           section={homePage.header}
           config={config} />
 
-        {homePage.contentBlocks?.map(contentBlock => {
+        {homePage.contentBlocks?.map((contentBlock, index) => {
           switch (contentBlock.blockType) {
             case 'work':
               return (
                 <Work
+                  key={`contentBlock-${index}`}
                   section={contentBlock}
                   work={work} />
               )
             case 'projects':
               return (
                 <Projects
+                  key={`contentBlock-${index}`}
                   section={contentBlock}
                   projects={projects} />
               )
             case 'contact':
               return (
                 <Contact
+                  key={`contentBlock-${index}`}
                   section={contentBlock}
                   config={config} />
               )

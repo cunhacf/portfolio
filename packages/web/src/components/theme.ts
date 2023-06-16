@@ -3,7 +3,7 @@ import { css, DefaultTheme, FlattenSimpleInterpolation } from 'styled-components
 export const colors = {
   main: '#FFFFFF',
   mainDark: '#1D1D1F',
-  secondary: '#FC6859',
+  secondary: '#ff4d55',
   secondaryAlt: '#F9F9F9',
   bg: '#FFFFFF',
   youtube: '#CC0000'
@@ -49,6 +49,7 @@ export const helpers = {
           font-weight: ${fontWeight};
           font-style: ${fontStyle};
           font-stretch: ${fontStretch};
+          font-display: swap;
       }
     `;
   }
