@@ -143,6 +143,8 @@ const App = ({ Component, pageProps }: AppProps) => {
 
         <link rel="icon" href={favicon.src} type="image/x-icon" />
         <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
+
+        <link rel="me" href="https://mastodon.social/@cunhacf" />
       </Head>
 
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-H94G76SZVS" strategy="afterInteractive" />
