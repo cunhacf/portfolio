@@ -1,14 +1,13 @@
-import { Rule } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { HiOutlineHome } from 'react-icons/hi';
 
-export default {
+export default defineType({
   name: 'homePage',
   type: 'document',
   title: 'Homepage',
-  documentId: 'homePage',
   icon: HiOutlineHome,
   fields: [
-    {
+    defineField({
       name: 'header',
       type: 'object',
       title: 'Header',
@@ -24,8 +23,8 @@ export default {
           of: [{ type: 'block' }]
         }
       ]
-    },
-    {
+    }),
+    defineField({
       name: 'contentBlocks',
       type: 'array',
       title: 'Content Blocks',
@@ -44,14 +43,14 @@ export default {
               { title: 'Contact', value: 'contact' },
             ]
           },
-          validation: (Rule: Rule) => [
+          validation: Rule => [
             Rule.required().error('Type is required')
           ]
         }, {
           name: 'title',
           type: 'string',
           title: 'Title',
-          validation: (Rule: Rule) => [
+          validation: Rule => [
             Rule.required().error('Title is required')
           ]
         }, {
@@ -59,19 +58,14 @@ export default {
           type: 'string',
           title: 'Description'
         }]
-      }],
-      preview: {
-        select: {
-          title: 'title'
-        }
-      }
-    },
-    {
+      }]
+    }),
+    defineField({
       name: 'language',
       type: 'string',
       readOnly: true,
       hidden: true
-    }
+    })
   ],
   preview: {
     select: {
@@ -86,4 +80,4 @@ export default {
       }
     }
   }
-};
+});

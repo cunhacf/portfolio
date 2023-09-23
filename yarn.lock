@@ -4249,14 +4249,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.22":
-  version: 18.2.22
-  resolution: "@types/react@npm:18.2.22"
+"@types/react@npm:18.2.11":
+  version: 18.2.11
+  resolution: "@types/react@npm:18.2.11"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 44289523dabaadcd3fd85689abb98f9ebcc8492d7e978348d1c986138acef4801030b279e89a19e38a6319e294bcea77559e37e0c803e4bacf2b8ae3a56ba587
+  checksum: 3dcc326ea87468a06079b6c3a9e0f9a98a8438526aba81d29820954e2cb343b6beb8ca3d6a212878797a909fbd3199d07a4d819cd3efbbdba8c22039c06f1ed8
   languageName: node
   linkType: hard
 
@@ -11412,6 +11412,7 @@ __metadata:
     "@sanity/eslint-config-studio": ^3.0.1
     "@sanity/orderable-document-list": ^1.1.0
     "@sanity/vision": ^3.16.7
+    "@types/react": 18.2.11
     eslint: ^8.50.0
     prettier: ^3.0.3
     react: ^18.2.0
@@ -12252,7 +12253,7 @@ __metadata:
     "@svgr/webpack": ^8.1.0
     "@types/aos": ^3.0.5
     "@types/node": 20.6.3
-    "@types/react": 18.2.22
+    "@types/react": 18.2.11
     "@types/react-dom": 18.2.7
     "@types/react-slick": ^0.23.10
     "@types/styled-components": ^5.1.27

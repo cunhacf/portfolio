@@ -1,21 +1,21 @@
-import { Rule, Slug } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 
-export default {
+export default defineType({
   name: 'page',
   type: 'document',
   title: 'Page',
   icon: HiOutlineDocumentText,
   fields: [
-    {
+    defineField({
       name: 'title',
       type: 'string',
       title: 'Title',
-      validation: (Rule: Rule) => [
+      validation: Rule => [
         Rule.required().error('Title is required'),
       ]
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       title: 'Slug',
@@ -23,28 +23,28 @@ export default {
         source: 'title',
         maxLength: 200
       },
-      validation: (Rule: Rule) => [
+      validation: Rule => [
         Rule.required().error('Slug is required'),
-        Rule.custom((slug: Slug) => slug.current.length <= 200 ? true : 'Slug cannot exceed 200 characters')
+        Rule.custom(slug => (slug?.current && slug.current.length <= 200) ? true : 'Slug cannot exceed 200 characters')
       ]
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       title: 'Image'
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       type: 'array',
       title: 'Content',
       of: [{ type: 'block' }]
-    },
-    {
+    }),
+    defineField({
       name: 'language',
       type: 'string',
       readOnly: true,
       hidden: true
-    }
+    })
   ],
   preview: {
     select: {
@@ -64,4 +64,4 @@ export default {
       }
     }
   }
-};
+});
