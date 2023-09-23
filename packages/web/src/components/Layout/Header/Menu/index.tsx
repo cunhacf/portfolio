@@ -165,7 +165,7 @@ const Menu = ({ items, className }: Props): JSX.Element => {
                 href={`${getPagePrefix(item.internalPage?._type as string)}/${item.internalPage?.slug.current}`}
                 onClick={() => setOpen(false)}>
 
-                <a>{item.title}</a>
+                {item.title}
               </ActiveLink>
             )}
           </Item>

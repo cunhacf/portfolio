@@ -8,7 +8,6 @@ export default {
   title: 'Project',
   icon: HiOutlineMusicNote,
   orderings: [orderRankOrdering],
-  i18n: true,
   fields: [
     {
       name: 'title',
@@ -62,6 +61,28 @@ export default {
       title: 'Inverted',
       initialValue: false,
     },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true
+    },
     orderRankField({ type: 'project' })
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      language: 'language',
+      image: 'cover'
+    },
+    prepare: ({ title, image, language }: { [key: string]: string }) => {
+      const formattedLanguage = language ? `(${language.toUpperCase()})` : null;
+      const formattedTitle = language ? `${title} ${formattedLanguage}` : title;
+
+      return {
+        title: formattedTitle,
+        media: image
+      }
+    }
+  }
 };

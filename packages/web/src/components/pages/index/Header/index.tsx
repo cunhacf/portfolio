@@ -89,10 +89,7 @@ const HeaderImage = styled.div`
   }
 `;
 
-const Header: NextPage<Props> = ({
-  config,
-  section
-}: Props) => {
+const Header = ({ config, section }: Props): JSX.Element => {
   return (
     <Wrap>
       <Container>

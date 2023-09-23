@@ -7,7 +7,6 @@ export default {
   type: 'document',
   title: 'Navigation',
   icon: BiNavigation,
-  i18n: true,
   fields: [
     {
       name: 'title',
@@ -61,6 +60,26 @@ export default {
       title: 'Open in new tab',
       hidden: ({ document }: any) => !document.external || document.children?.length,
     },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true
+    },
     orderRankField({ type: 'navigation' })
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      language: 'language'
+    },
+    prepare: ({ title, language }: { [key: string]: string }) => {
+      const formattedLanguage = language ? `(${language.toUpperCase()})` : null;
+      const formattedTitle = language ? `${title} ${formattedLanguage}` : title;
+
+      return {
+        title: formattedTitle
+      }
+    }
+  }
 };

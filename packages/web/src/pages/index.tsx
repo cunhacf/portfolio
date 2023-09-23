@@ -79,11 +79,8 @@ const HomePage: NextPage<Props> = ({
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
   const fetch = await client.fetch(groq`{
-    "config": coalesce(
-      *[_type == "config" && _id == 'config__i18n_' + $locale][0],
-      *[_type == "config" && _id == 'config'][0]
-    ),
-    "navigation": *[_type == "navigation" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc){
+    "config": *[_type == "config" && language == $locale][0],
+    "navigation": *[_type == "navigation" && !(_id in path("drafts.**")) && language == $locale] | order(orderRank asc){
       _id,
       title,
       external,
@@ -91,12 +88,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
       blank,
       internalPage->
     },
-    "homePage": coalesce(
-      *[_type == "homePage" && _id == 'homePage__i18n_' + $locale][0],
-      *[_type == "homePage" && _id == 'homePage'][0]
-    ),
-    "work": *[_type == "work" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
-    "projects": *[_type == "project" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc),
+    "homePage": *[_type == "homePage" && language == $locale][0],
+    "work": *[_type == "work" && !(_id in path("drafts.**")) && language == $locale] | order(orderRank asc),
+    "projects": *[_type == "project" && !(_id in path("drafts.**")) && language == $locale] | order(orderRank asc),
   }`, { locale });
 
   const config = fetch.config;

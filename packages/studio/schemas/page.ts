@@ -6,7 +6,6 @@ export default {
   type: 'document',
   title: 'Page',
   icon: HiOutlineDocumentText,
-  i18n: true,
   fields: [
     {
       name: 'title',
@@ -40,16 +39,26 @@ export default {
       title: 'Content',
       of: [{ type: 'block' }]
     },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true
+    }
   ],
   preview: {
     select: {
       title: 'title',
+      language: 'language',
       slug: 'slug.current',
       image: 'image'
     },
-    prepare({ title, slug, image }: { [key: string]: string }) {
+    prepare: ({ title, language, slug, image }: { [key: string]: string }) => {
+      const formattedLanguage = language ? `(${language.toUpperCase()})` : null;
+      const formattedTitle = language ? `${title} ${formattedLanguage}` : title;
+
       return {
-        title,
+        title: formattedTitle,
         subtitle: `/${slug}`,
         media: image
       }

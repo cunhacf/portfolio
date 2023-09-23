@@ -7,7 +7,6 @@ export default {
   title: 'General Settings',
   documentId: 'config',
   icon: HiOutlineCog,
-  i18n: true,
   fields: [
     {
       name: 'title',
@@ -69,11 +68,23 @@ export default {
         Rule.uri({ scheme: ['http', 'https', 'mailto'] }).error('Invalid scheme')
       ]
     },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true
+    }
   ],
   preview: {
-    prepare: () => {
+    select: {
+      language: 'language'
+    },
+    prepare: ({ language }: { [key: string]: string }) => {
+      const formattedLanguage = language ? `(${language.toUpperCase()})` : null;
+      const formattedTitle = language ? `General Settings ${formattedLanguage}` : 'General Settings';
+
       return {
-        title: 'General Settings'
+        title: formattedTitle
       }
     }
   }

@@ -39,13 +39,15 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (page?.__i18n_lang !== router.locale) {
-      const localeRef: SanityPage | undefined = page?.__i18n_base
-        ? page?.__i18n_base as SanityPage
-        : page?.__i18n_refs?.find((ref: SanityDocument) => ref.__i18n_lang === router.locale) as SanityPage;
+    if (page?.language !== router.locale) {
+      const localeRef: SanityPage | undefined = page?._translations?.find((ref: SanityDocument) => ref.language === router.locale) as SanityPage;
 
       if (localeRef) {
-        router.push(page?.__i18n_base ? `/${localeRef.slug.current}` : `/${router.locale}/${localeRef.slug.current}`);
+        router.push(
+          router.defaultLocale === localeRef.language
+            ? `/${localeRef.slug.current}`
+            : `/${router.locale}/${localeRef.slug.current}`
+        );
       }
     }
   }, [router, page]);
@@ -76,8 +78,15 @@ const Page: NextPage<Props> = ({ config, navigation, page }: Props) => {
         <meta property="og:description" content={`${toPlainText(page.content).substring(0, 200)}...` || config.description} key="og-description" />
         {page.image && <meta property="og:image" content={sanityImage(page.image).url()} key="og-image" />}
 
-        {page.__i18n_base && <link rel="alternate" hrefLang={page.__i18n_base.__i18n_lang} href={`/${(page.__i18n_base as SanityPage).slug.current}`} />}
-        {page.__i18n_refs?.map(i18nRef => <link key={i18nRef.__i18n_lang} rel="alternate" hrefLang={i18nRef.__i18n_lang} href={`/${i18nRef.__i18n_lang}/${(i18nRef as SanityPage).slug.current}`} />)}
+        {page._translations?.map(translation => translation.language !== router.locale && <link
+          key={translation.language}
+          rel="alternate"
+          hrefLang={translation.language}
+          href={
+            router.defaultLocale === translation.language
+              ? `/${(translation as SanityPage).slug.current}`
+              : `/${translation.language}/${(translation as SanityPage).slug.current}`
+          } />)}
       </Head>
 
       <PageSection>
@@ -114,11 +123,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params, locale }) 
   const { slug } = params as Params;
 
   const fetch = await client.fetch(groq`{
-    "config": coalesce(
-      *[_type == "config" && _id == 'config__i18n_' + $locale][0],
-      *[_type == "config" && _id == 'config'][0]
-    ),
-    "navigation": *[_type == "navigation" && !(_id in path("drafts.**")) && __i18n_lang == $locale] | order(orderRank asc){
+    "config": *[_type == "config" && language == $locale][0],
+    "navigation": *[_type == "navigation" && !(_id in path("drafts.**")) && language == $locale] | order(orderRank asc){
       _id,
       title,
       external,
@@ -127,15 +133,17 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params, locale }) 
       internalPage->
     },
     "page": *[_type == "page" && $slug == slug.current][0]{
-      __i18n_lang,
-      __i18n_refs[]->,
-      __i18n_base->,
+      language,
       _createdAt,
       _updatedAt,
       content,
       image,
       slug,
-      title
+      title,
+      "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+        language,
+        slug
+      }
     }
   }`, { slug, locale });
 

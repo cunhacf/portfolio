@@ -3,7 +3,7 @@ import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
 import { colorInput } from '@sanity/color-input';
-import { documentI18n } from '@sanity/document-internationalization';
+import { documentInternationalization } from '@sanity/document-internationalization';
 import { schemaTypes } from './schemas';
 
 import { RiPagesLine } from 'react-icons/ri';
@@ -33,9 +33,7 @@ export default defineConfig({
                       .title('Homepage')
                       .icon(HiOutlineHome)
                       .child(
-                        S.document()
-                          .schemaType('homePage')
-                          .documentId('homePage')
+                        S.documentTypeList('homePage')
                           .title('Homepage')
                       ),
                     S.listItem()
@@ -74,16 +72,24 @@ export default defineConfig({
               .title('General Settings')
               .icon(HiOutlineCog)
               .child(
-                S.document()
-                  .schemaType('config')
-                  .documentId('config')
+                S.documentTypeList('config')
                   .title('General Settings')
               ),
           ]);
     }
-  }), visionTool(), colorInput(), documentI18n({
-    base: 'pt',
-    languages: ['pt', 'en'],
+  }), visionTool(), colorInput(), documentInternationalization({
+    supportedLanguages: [
+      { title: 'Português', id: 'pt' },
+      { title: 'English', id: 'en' }
+    ],
+    schemaTypes: [
+      'config',
+      'homePage',
+      'navigation',
+      'page',
+      'project',
+      'work'
+    ]
   })],
 
   schema: {

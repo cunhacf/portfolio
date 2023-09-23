@@ -7,7 +7,6 @@ export default {
   title: 'Homepage',
   documentId: 'homePage',
   icon: HiOutlineHome,
-  i18n: true,
   fields: [
     {
       name: 'header',
@@ -67,11 +66,23 @@ export default {
         }
       }
     },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true
+    }
   ],
   preview: {
-    prepare: () => {
+    select: {
+      language: 'language'
+    },
+    prepare: ({ language }: { [key: string]: string }) => {
+      const formattedLanguage = language ? `(${language.toUpperCase()})` : null;
+      const formattedTitle = language ? `Homepage ${formattedLanguage}` : 'Homepage';
+
       return {
-        title: 'Homepage'
+        title: formattedTitle
       }
     }
   }

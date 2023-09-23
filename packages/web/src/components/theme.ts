@@ -1,4 +1,4 @@
-import { css, DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
+import { css, DefaultTheme, RuleSet } from 'styled-components';
 
 export const colors = {
   main: '#FFFFFF',
@@ -30,7 +30,7 @@ export const helpers = {
     return `calc(${size / vwContext} * 1vw)`;
   },
 
-  fontSize: (size: number): FlattenSimpleInterpolation => {
+  fontSize: (size: number): RuleSet<object> => {
     return css`font-size: ${helpers.toRem(size)};`;
   },
 
@@ -40,7 +40,7 @@ export const helpers = {
     return `${parseInt(result?.[1] || '0', 16)}, ${parseInt(result?.[2] || '0', 16)}, ${parseInt(result?.[3] || '0', 16)}`;
   },
 
-  font: (fontFamily: string, fontFilename: string, fontWeight = 400, fontStyle = 'normal', fontStretch = 'normal'): FlattenSimpleInterpolation => {
+  font: (fontFamily: string, fontFilename: string, fontWeight = 400, fontStyle = 'normal', fontStretch = 'normal'): RuleSet<object> => {
     return css`
       @font-face {
           font-family: ${fontFamily};
