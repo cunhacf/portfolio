@@ -16,14 +16,14 @@ export const buttonStyle = css<Props>`
   letter-spacing: 0.02em;
   cursor: pointer;
   background: ${props => props.muted ? props.theme.colors.secondaryAlt : props.theme.colors.secondary};
-  color: ${props => props.theme.colors.mainDark};
+  color: ${props => props.muted ? props.theme.colors.mainDark : props.theme.colors.main};
   transition: all 0.2s;
 
   &:hover,
   &:focus {
     outline: none;
     background: ${props => props.muted ? props.theme.colors.secondary : props.theme.colors.mainDark};
-    color: ${props => props.muted ? props.theme.colors.mainDark : props.theme.colors.main};
+    color: ${props => props.theme.colors.main};
   }
 
   &:disabled {

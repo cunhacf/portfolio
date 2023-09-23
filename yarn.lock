@@ -2481,9 +2481,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/document-internationalization@npm:latest":
-  version: 1.0.5
-  resolution: "@sanity/document-internationalization@npm:1.0.5"
+"@sanity/document-internationalization@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@sanity/document-internationalization@npm:1.1.1"
   dependencies:
     "@cprecioso/country-flag-emoji": ^1.0.0
     "@sanity/color": ^2.1.20
@@ -2505,10 +2505,10 @@ __metadata:
     react-dom: ^18
     react-router: ^5.0.0
     react-router-dom: ^5.0.0
-    rxjs: ^6.0.0
+    rxjs: ^7.0.0
     sanity: ^3.0.0
     styled-components: ^5.0.0
-  checksum: 33ced7ba23a448fd6f2818f25e094653de06900e95a70f5b1348fb99fdec5338389ce1871246370ac95eee00f2068485a97a042224be804d7c9baa2c50e6ef2c
+  checksum: b74d1953a3ca740e326a5d7340ef678fe119ee41853307f36d862d7d6f818fe19d08020f9b6f4efe26699f14cf05d4e24e8ae22d83c867c59ea1e2ebf090d269
   languageName: node
   linkType: hard
 
@@ -9968,7 +9968,7 @@ __metadata:
   dependencies:
     "@sanity/cli": latest
     "@sanity/color-input": ^3.0.2
-    "@sanity/document-internationalization": latest
+    "@sanity/document-internationalization": ^1.1.1
     "@sanity/eslint-config-studio": ^2.0.1
     "@sanity/orderable-document-list": ^1.0.2
     "@sanity/vision": ^3.0.0

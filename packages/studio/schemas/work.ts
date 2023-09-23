@@ -44,6 +44,18 @@ export default {
       ]
     },
     {
+      name: 'size',
+      type: 'string',
+      title: 'Size',
+      initialValue: 'normal',
+      options: {
+        list: [
+          { title: 'Normal', value: 'normal' },
+          { title: 'Big', value: 'big' },
+        ],
+      },
+    },
+    {
       name: 'url',
       type: 'url',
       title: 'URL'

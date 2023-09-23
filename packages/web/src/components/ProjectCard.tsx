@@ -8,15 +8,28 @@ interface Props {
   project: SanityWork;
 }
 
-const Wrap = styled.div`
+interface WrapProps {
+  span: number;
+}
+
+interface CoverProps {
+  span: number;
+}
+
+const Wrap = styled.div<WrapProps>`
   padding: 20px 30px 0;
   border-radius: ${props => props.theme.helpers.toRem(20)};
   overflow: hidden;
   border-radius: 20px;
   overflow: hidden;
+  grid-column: span ${props => props.span};
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.isDark ? props.theme.colors.mainDark : props.theme.colors.main};
   transition: all 0.2s;
+
+  @media screen and (max-width: 640px) {
+    grid-column: 1;
+  }
 
   &.inverted {
     color: ${props => props.theme.isDark ? props.theme.colors.main : props.theme.colors.mainDark};
@@ -56,14 +69,19 @@ const Title = styled.div`
   }
 `;
 
-const Cover = styled.div`
+const Cover = styled.div<CoverProps>`
   margin: 30px -60px -30px 0;
   position: relative;
   top: 0;
   left: 0;
   border-top-left-radius: 20px;
+  aspect-ratio: ${props => props.span === 2 ? 2.64/1 : 'auto'};
   overflow: hidden;
   transition: top 0.2s ease-in-out, left 0.2s ease-in-out;
+
+  @media screen and (max-width: 640px) {
+    aspect-ratio: 2/1;
+  }
 
   ${Wrap}:hover & {
     top: -10px;
@@ -78,6 +96,7 @@ const Cover = styled.div`
 `;
 
 const ProjectCard = ({ project }: Props): JSX.Element => {
+  console.log(project);
   const cardContent = (
     <>
       <Title>
@@ -85,7 +104,7 @@ const ProjectCard = ({ project }: Props): JSX.Element => {
         <p dangerouslySetInnerHTML={{ __html: project.description }} />
       </Title>
 
-      <Cover>
+      <Cover span={project.size === 'big' ? 2 : 1}>
         <Image
           width={1360}
           height={1050}
@@ -97,6 +116,7 @@ const ProjectCard = ({ project }: Props): JSX.Element => {
 
   return (
     <Wrap
+      span={project.size === 'big' ? 2 : 1}
       className={`project-card ${project.inverted ? 'inverted' : ''}`}
       style={{ backgroundColor: project.color.hex }}>
 
