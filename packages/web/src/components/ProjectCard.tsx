@@ -39,6 +39,15 @@ const Wrap = styled.div<WrapProps>`
     }
   }
 
+  &.has-link {
+    padding: 0;
+
+    & > a {
+      padding: 20px 30px 0;
+      display: block;
+    }
+  }
+
   &:hover {
     background: ${props => props.theme.isDark ? props.theme.colors.secondaryAlt : props.theme.colors.mainDark} !important;
   }
@@ -116,7 +125,7 @@ const ProjectCard = ({ project }: Props): JSX.Element => {
   return (
     <Wrap
       span={project.size === 'big' ? 2 : 1}
-      className={`project-card ${project.inverted ? 'inverted' : ''}`}
+      className={`project-card ${project.inverted ? 'inverted' : ''} ${project.url ? 'has-link' : ''}`}
       style={{ backgroundColor: project.color.hex }}>
 
       {project.url ? (
