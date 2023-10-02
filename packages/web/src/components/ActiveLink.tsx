@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Link, { LinkProps } from 'next/link';
 
 interface Props extends LinkProps {
   className?: string;
   strict?: boolean;
   strictPag?: boolean;
-  href: string;
+  children?: JSX.Element[] | JSX.Element | string;
 }
 
 // https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.js
-const ActiveLink = ({ children, className = '', href, strict = false, strictPag = false, ...props }: React.PropsWithChildren<Props>): JSX.Element => {
-  const { pathname } = useRouter();
+const ActiveLink = ({ children, className = '', href, strict = false, strictPag = false, ...props }: Props) => {
+  const pathname = usePathname();
   const [path, setPath] = useState('/');
   const url = props.as || href || '/';
   const startsWithRegex = new RegExp('^' + url + '(?!-)');

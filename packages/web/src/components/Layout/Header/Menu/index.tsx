@@ -135,7 +135,7 @@ const Item = styled.li<ItemProps>`
   }
 `;
 
-const Menu = ({ items, className }: Props): JSX.Element => {
+const Menu = ({ items, className }: Props) => {
   const [open, setOpen] = useState(true);
 
   const getPagePrefix = (type: string) => {

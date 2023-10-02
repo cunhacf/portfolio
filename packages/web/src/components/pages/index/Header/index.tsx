@@ -89,7 +89,7 @@ const HeaderImage = styled.div`
   }
 `;
 
-const Header = ({ config, section }: Props): JSX.Element => {
+const Header = ({ config, section }: Props) => {
   return (
     <Wrap>
       <Container>

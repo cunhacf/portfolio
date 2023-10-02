@@ -23,16 +23,46 @@ const SiteFooter = styled.footer`
   }
 `;
 
-const Copyright = styled.div``;
+const FooterBlock = styled.div`
+  flex-basis: 33.333%;
+  flex-shrink: 0;
 
-const Footer = (): JSX.Element => {
+  @media screen and (max-width: 640px) {
+    flex-basis: 48%;
+  }
+
+  &:nth-child(2) {
+    text-align: center;
+
+    @media screen and (max-width: 640px) {
+      text-align: right;
+    }
+  }
+
+  &:last-child {
+    text-align: right;
+
+    @media screen and (max-width: 640px) {
+      text-align: left;
+    }
+  }
+`;
+
+const Footer = () => {
   return (
     <SiteFooter>
       <Container>
-        <Copyright>© {new Date().getFullYear()} Carlos Fernandes Cunha</Copyright>
+        <FooterBlock>
+          <div>© {new Date().getFullYear()} Carlos Fernandes Cunha.<br/> 30.000.894 CARLOS FERNANDES CUNHA</div>
+        </FooterBlock>
 
-        <ThemeSwitcher />
-        <LanguageSwitcher />
+        <FooterBlock>
+          <ThemeSwitcher />
+        </FooterBlock>
+
+        <FooterBlock>
+          <LanguageSwitcher />
+        </FooterBlock>
       </Container>
     </SiteFooter>
   );

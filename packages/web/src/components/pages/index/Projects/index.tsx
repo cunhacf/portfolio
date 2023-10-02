@@ -26,7 +26,7 @@ const ProjectList = styled.div`
   }
 `;
 
-const Projects = ({ section, projects }: Props): JSX.Element | null => {
+const Projects = ({ section, projects }: Props) => {
   if (!projects?.length) return null;
 
   return (

@@ -62,7 +62,7 @@ const Social = styled.div`
   }
 `;
 
-const Contact = ({ config }: Props): JSX.Element => {
+const Contact = ({ config }: Props) => {
   const { t } = useTranslation('common');
 
   return (

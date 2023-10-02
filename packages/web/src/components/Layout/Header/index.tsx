@@ -40,7 +40,7 @@ const LogoWrap = styled.div`
   color: ${props => props.theme.colors.secondary};
 `;
 
-const Header = ({ config, navigation }: Props): JSX.Element => {
+const Header = ({ config, navigation }: Props) => {
   const { t } = useTranslation('common');
 
   return (

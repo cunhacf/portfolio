@@ -8,6 +8,8 @@ import IconMoon from '@root/public/img/icon-moon.svg';
 type AppTheme = 'light' | 'dark' | string;
 
 const Wrap = styled.div`
+  display: inline-block;
+
   @media screen and (max-width: 960px) {
     margin: 20px 0;
   }
@@ -26,7 +28,7 @@ const Toggler = styled.button`
   }
 `;
 
-const ThemeSwitcher = (): JSX.Element => {
+const ThemeSwitcher = () => {
   const { t } = useTranslation('common');
   const [theme, setTheme] = useState<AppTheme>();
 

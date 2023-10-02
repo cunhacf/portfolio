@@ -20,7 +20,7 @@ const Layout = ({
   config,
   navigation,
   children,
-}: React.PropsWithChildren<Props>): JSX.Element => {
+}: React.PropsWithChildren<Props>) => {
   return (
     <>
       <Header config={config} navigation={navigation} />

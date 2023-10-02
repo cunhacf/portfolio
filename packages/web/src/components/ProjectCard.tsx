@@ -104,7 +104,7 @@ const Cover = styled.div<CoverProps>`
   }
 `;
 
-const ProjectCard = ({ project }: Props): JSX.Element => {
+const ProjectCard = ({ project }: Props) => {
   const cardContent = (
     <>
       <Title>

@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 import { buttonStyle } from './Button';
 
-interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+type Props = {
   muted?: boolean;
-}
+} & React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 
-const StyledLinkButton = ({ muted, ...props }: React.PropsWithChildren<Props>) => <a {...props} />;
-
-const LinkButton = styled(StyledLinkButton)`
+const LinkButton = styled.a<Props>`
   && {
     ${buttonStyle};
     display: inline-flex;

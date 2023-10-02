@@ -30,7 +30,7 @@ const WorkList = styled.div`
   }
 `;
 
-const Work = ({ section, work }: Props): JSX.Element | null => {
+const Work = ({ section, work }: Props) => {
   if (!work?.length) return null;
 
   return (

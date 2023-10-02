@@ -14,7 +14,7 @@ const Wrap = styled(Section)`
 
 `;
 
-const Contact = ({ config, section }: Props): JSX.Element | null => {
+const Contact = ({ config, section }: Props) => {
   return (
     <Wrap id="contact">
       <Container>

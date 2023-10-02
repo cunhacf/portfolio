@@ -9,7 +9,7 @@ const Wrap = styled.div`
   }
 `;
 
-const LanguageSwitcher = (): JSX.Element => {
+const LanguageSwitcher = () => {
   const router = useRouter();
   const { i18n: { language } } = useTranslation();
 
