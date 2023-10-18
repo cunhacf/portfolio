@@ -9,29 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@portabletext/react": "^3.0.7",
+    "@formatjs/intl-localematcher": "^0.4.2",
+    "@portabletext/react": "^3.0.11",
     "@sanity/image-url": "^1.0.2",
-    "@sentry/nextjs": "^7.70.0",
+    "@sentry/nextjs": "^7.74.1",
     "@svgr/webpack": "^8.1.0",
-    "@types/aos": "^3.0.5",
-    "@types/node": "20.6.3",
-    "@types/react": "18.2.11",
-    "@types/react-dom": "18.2.7",
-    "@types/react-slick": "^0.23.10",
-    "@types/styled-components": "^5.1.27",
-    "eslint": "8.50.0",
-    "eslint-config-next": "13.5.2",
-    "i18next": "^23.5.1",
-    "next": "13.5.2",
-    "next-i18next": "^14.0.3",
-    "next-sanity": "^5.5.4",
+    "@types/aos": "^3.0.6",
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.29",
+    "@types/react-dom": "18.2.13",
+    "@types/react-slick": "^0.23.11",
+    "@types/styled-components": "^5.1.28",
+    "eslint": "8.51.0",
+    "eslint-config-next": "13.5.5",
+    "negotiator": "^0.6.3",
+    "next": "13.5.5",
+    "next-sanity": "^5.5.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-i18next": "^13.2.2",
     "typescript": "5.2.2"
   },
   "resolutions": {
     "@types/react": "18.2.11",
     "@types/react-dom": "18.2.8"
+  },
+  "devDependencies": {
+    "@types/negotiator": "^0.6.2"
   }
 }

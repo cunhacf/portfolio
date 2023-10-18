@@ -1,18 +1,17 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useTranslation } from 'next-i18next';
 
-import LinkButton from '@/components/Layout/LinkButton';
+import LinkButton from '@/components/LinkButton';
 import { helpers } from '@/components/theme';
+import { useTranslation } from '@/components/Translation';
 
-import IconYouTube from '@root/public/img/icon-youtube.svg';
-import IconInstagram from '@root/public/img/logo-instagram.svg';
-import IconFacebook from '@root/public/img/logo-facebook.svg';
-import IconTwitter from '@root/public/img/logo-twitter.svg';
-import IconTikTok from '@root/public/img/logo-tiktok.svg';
-import IconGitHub from '@root/public/img/logo-github.svg';
-import IconLinkedIn from '@root/public/img/logo-linkedin.svg';
+import IconYouTube from '@/assets/img/icon-youtube.svg';
+import IconInstagram from '@/assets/img/logo-instagram.svg';
+import IconFacebook from '@/assets/img/logo-facebook.svg';
+import IconTwitter from '@/assets/img/logo-twitter.svg';
+import IconTikTok from '@/assets/img/logo-tiktok.svg';
+import IconGitHub from '@/assets/img/logo-github.svg';
+import IconLinkedIn from '@/assets/img/logo-linkedin.svg';
 
 interface Props {
   config: SanitySiteConfig;
@@ -63,7 +62,7 @@ const Social = styled.div`
 `;
 
 const Contact = ({ config }: Props) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
 
   return (
     <Wrap>
