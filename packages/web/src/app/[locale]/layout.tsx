@@ -22,10 +22,12 @@ const generalSans = localFont({
     {
       path: '../../assets/fonts/GeneralSans/GeneralSans-Variable.woff2',
       style: 'normal',
+      weight: '1 999'
     },
     {
       path: '../../assets/fonts/GeneralSans/GeneralSans-VariableItalic.woff2',
       style: 'italic',
+      weight: '1 999'
     },
   ],
   variable: '--font-general-sans',
