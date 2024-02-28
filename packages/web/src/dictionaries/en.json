@@ -4,5 +4,6 @@
   "error404Text": "The page you're looking for doesn't exist",
   "enable": "Enable",
   "disable": "Disable",
-  "darkMode": "dark mode"
+  "darkMode": "dark mode",
+  "headerImageAlt": "Header image"
 }

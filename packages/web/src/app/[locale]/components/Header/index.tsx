@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { PortableText } from '@portabletext/react';
 
 import { Container } from '@/components/Layout';
+import Contact from '@/components/Contact';
+import { useTranslation } from '@/components/Translation';
 
 import sanityImage from '@root/utils/sanityImage';
-import Contact from '@root/src/components/Contact';
 
 interface Props {
   config: SanitySiteConfig;
@@ -90,6 +91,8 @@ const HeaderImage = styled.div`
 `;
 
 const Header = ({ config, section }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <Wrap>
       <Container>
@@ -108,8 +111,10 @@ const Header = ({ config, section }: Props) => {
               width={960}
               height={960}
               src={sanityImage(section.image).width(960).height(960).quality(100).auto('format').url()}
+              placeholder="blur"
+              blurDataURL={section.image.asset.metadata.lqip}
               quality={100}
-              alt="Fundo do topo"
+              alt={t('headerImageAlt')}
               loading="eager"
               priority />
           </picture>

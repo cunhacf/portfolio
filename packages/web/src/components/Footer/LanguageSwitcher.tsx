@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import styled from 'styled-components';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 import { useTranslation } from '@/components/Translation';
 
@@ -12,8 +12,8 @@ const Wrap = styled.div`
 
 const LanguageSwitcher = () => {
   const router = useRouter();
-  const { slug } = useParams();
   const { locales, locale } = useTranslation();
+  const path = usePathname();
 
   const languageNames: { [key: string]: string } = {
     en: 'English',
@@ -21,12 +21,10 @@ const LanguageSwitcher = () => {
   };
 
   const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    return router.push(
-      slug
-        ? `/${e.target.value}/${slug}`
-        : `/${e.target.value}`
-    );
-  }, [slug, router]);
+    const newUrl = path.replace(new RegExp(`^\/${locale}`), `/${e.target.value}`);
+
+    return router.push(newUrl);
+  }, [locale, path, router]);
 
   return (
     <Wrap>

@@ -4,5 +4,6 @@
   "error404Text": "A página que você está procurando não existe",
   "enable": "Habilitar",
   "disable": "Desabilitar",
-  "darkMode": "modo noturno"
+  "darkMode": "modo noturno",
+  "headerImageAlt": "Imagem do topo"
 }

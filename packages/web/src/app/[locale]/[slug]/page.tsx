@@ -33,7 +33,13 @@ const getData = async (slug: string, locale: string): Promise<Props> => {
       _createdAt,
       _updatedAt,
       content,
-      image,
+      image{
+        alt,
+        asset->{
+          ...,
+          metadata
+        }
+      },
       slug,
       title,
       "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
@@ -62,8 +68,18 @@ export const generateMetadata = async ({ params }: { params: Params }) => {
     title: `${page.title} · ${config.title}`,
     openGraph: {
       title: `${page.title} · ${config.title}`
+    },
+    alternates: {
+      canonical: `/${locale}/${page.slug.current}`,
+      languages: {}
     }
   };
+
+  page._translations?.forEach(translation => {
+    if (translation.language === locale) return;
+
+    metadata.alternates!.languages![translation.language as any] = `/${translation.language}/${translation.slug.current}`;
+  });
 
   if (config.description) metadata.description = config.description;
   if (page.image) metadata.openGraph!.images = sanityImage(page.image).url();

@@ -1,5 +1,7 @@
+import { Viewport } from 'next';
 import { groq } from 'next-sanity';
 import localFont from 'next/font/local';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import Layout from '@/components/Layout';
 
@@ -55,14 +57,21 @@ const getData = async (locale: string): Promise<Props> => {
   };
 };
 
+export const generateViewport = (): Viewport => {
+  return {
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: '#FFFFFF' },
+      { media: '(prefers-color-scheme: dark)', color: '#1D1D1F' },
+    ],
+  }
+};
+
 const RootLayout = async ({ params, children }: React.PropsWithChildren<{ params: Params }>) => {
   const { locale } = params;
   const { config, navigation } = await getData(locale);
 
   return (
     <html lang={locale}>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
       <link rel="icon" href={favicon.src} type="image/x-icon" />
       <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
 
@@ -75,6 +84,8 @@ const RootLayout = async ({ params, children }: React.PropsWithChildren<{ params
           </Layout>
         </StyledComponentsRegistry>
       </body>
+
+      <GoogleAnalytics gaId="G-H94G76SZVS" />
     </html>
   );
 };

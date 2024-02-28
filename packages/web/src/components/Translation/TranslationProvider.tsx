@@ -27,7 +27,7 @@ const TranslationProvider = ({ children, locale }: React.PropsWithChildren<Props
       pt: ptDict,
     };
 
-    return dictionaries[locale][text];
+    return dictionaries[locale][text] || text;
   }, [locale]);
 
   return (

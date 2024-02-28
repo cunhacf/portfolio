@@ -116,6 +116,8 @@ const ProjectCard = ({ project }: Props) => {
         <Image
           width={1360}
           height={1050}
+          placeholder="blur"
+          blurDataURL={project.cover.asset.metadata.lqip}
           src={sanityImage(project.cover).width(1360).height(1050).crop('top').fit('crop').auto('format').url()}
           alt={`Imagem do projeto "${project.title}"`} />
       </Cover>
